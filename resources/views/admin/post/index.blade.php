@@ -146,6 +146,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Check</th>
                                             <th>Title</th>
                                             <th>Comment</th>
                                             <th>Category</th>
@@ -155,9 +156,14 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($postSearchData['posts'] as $item)
-                                        {{-- @dd($item) --}}
+                                            {{-- @dd($item) --}}
                                             <tr>
                                                 <td>{{ $item->id }}</td>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="id[]" class="form-check-input">
+                                                    </div>
+                                                </td>
                                                 <td>{{ $item->title }}</td>
                                                 <td><a
                                                         href="{{ route('admin.post.comment.index', $item->slug) }}">Comment</a>
@@ -189,6 +195,18 @@
                                 </table>
                             </div>
                             <!-- /.card-body -->
+                        </div>
+                        <div>
+                            @can('deleteAnyInfomation', auth()->user())
+                                <td>
+                                    <form action="{{ route('admin.post.destroy', $item->slug) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger deleteBtn">Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            @endcan
                         </div>
                         <div class="mt-3">
                             {{ $postSearchData['posts']->withQueryString()->links() }}
