@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('title')
+    {{ '404' }}
+@endsection
+
 @section('content')
     <main>
         <div class="container">
@@ -10,7 +14,7 @@
                         <h5 class="edica-404-subtitle" data-aos="fade-up" data-aos-delay="100">Page not found!</h5>
                         <p class="edics-404-text" data-aos="fade-up" data-aos-delay="200">Oops! The page you are looking for
                             does not exist.It might have been moved or deleted.</p>
-                        <a href="{{ route('home') }}" class="edica-404-link btn btn-warning" data-aos="fade-up"
+                        <a href="{{ url()->previous() }}" class="edica-404-link btn btn-warning" data-aos="fade-up"
                             data-aos-delay="300">Go BAck</a>
                     </section>
                 </div>

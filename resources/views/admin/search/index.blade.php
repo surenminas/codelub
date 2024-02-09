@@ -47,16 +47,16 @@
                                             <tr>
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->title }}</td>
-                                                <td><a href="{{ route('admin.post.show', $item->id) }}"><i
+                                                <td><a href="{{ route('admin.post.show', $item->slug) }}"><i
                                                             class="fas fa-eye"></i></a>
                                                 </td>
                                                 <td><a class="text-success"
-                                                        href="{{ route('admin.post.edit', $item->id) }}"><i
+                                                        href="{{ route('admin.post.edit', $item->slug) }}"><i
                                                             class="far fa-edit"></i></a>
                                                 </td>
                                                 @can('deleteAnyInfomation', auth()->user())
                                                     <td>
-                                                        <form action="{{ route('admin.post.destroy', $item->id) }}"
+                                                        <form action="{{ route('admin.post.destroy', $item->slug) }}"
                                                             method="post">
                                                             @csrf
                                                             @method('delete')

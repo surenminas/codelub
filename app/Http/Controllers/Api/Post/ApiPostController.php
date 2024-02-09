@@ -4,22 +4,16 @@ namespace App\Http\Controllers\Api\Post;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Services\Post\Service;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use App\Http\Resources\Post\PostRresource;
+use App\Http\Resources\Post\PostResource;
 use App\Http\Resources\Post\PostCollection;
 
-class ApiPostController 
+
+class ApiPostController
 {
-
-    public function __construct(protected Service $service)
-    {
-                
-    }
-
     public function index()
     {
-        return new PostRresource(Post::orderByDesc('created_at')->first());
+        return new PostResource(Post::orderByDesc('created_at')->first());
 
     }
 
@@ -27,7 +21,7 @@ class ApiPostController
     {
         return new PostCollection(Post::paginate(6));
     }
-    
+
     public function myPosts(Request $request)
     {
         $token = JWTAuth::getToken();
@@ -36,5 +30,4 @@ class ApiPostController
         //get user ID from $payload["user_id"]
         //get posts which belong to userID
     }
-    
 }

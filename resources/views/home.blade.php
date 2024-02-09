@@ -8,7 +8,7 @@
     <main>
         <section class="edica-landing-section edica-landing-blog">
             <div class="container">
-                <h2 class="edica-landing-section-title" data-aos="fade-up">Most Populary Posts </h2>
+                <h2 class="edica-landing-section-title" data-aos="fade-up">Most Popular Posts</h2>
                 <div class="row">
                     @foreach ($mostPopularyPosts as $item)
                         <div class="col-md-4 landing-blog-post" data-aos="fade-right">

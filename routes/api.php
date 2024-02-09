@@ -39,7 +39,9 @@ Route::group(['middleware' => 'jwt.auth'], function(){
     });
 });
 
-Route::group(['namespace' => 'Api', 'middleware' => 'jwt.auth'], function () {
+// Route::group(['namespace' => 'Api', 'middleware' => 'jwt.auth'], function () {
+    Route::group(['namespace' => 'Api'], function () {
+
 
     Route::group(['namespace' => 'Post', 'prefix' => 'post'], function () {
 
@@ -50,5 +52,4 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.auth'], function () {
 });
 
 
-// Route::get('/post', [PostController::class, 'index']);
 

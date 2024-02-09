@@ -82,7 +82,7 @@ Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' =>
 
     Route::group(['namespace' => 'Like', 'prefix' => 'like'], function () {
         Route::get('/', [App\Http\Controllers\Personal\Like\LikeController::class, 'index'])->name('personal.like.index');
-        Route::delete('/{post}', [App\Http\Controllers\Personal\Like\LikeController::class, 'destroy'])->name('personal.like.delete');
+        Route::delete('/{like}', [App\Http\Controllers\Personal\Like\LikeController::class, 'destroy'])->name('personal.like.delete');
     });
 
     Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function () {

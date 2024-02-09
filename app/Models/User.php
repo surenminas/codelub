@@ -88,6 +88,8 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
      */
     public function getJWTCustomClaims()
     {
-        //return [ 'user_id' => $this->id ];
+        return [ 'user_id' => $this->id ];
     }
+
+    
 }

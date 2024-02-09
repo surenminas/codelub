@@ -15,12 +15,13 @@ class Service
                     'select posts.*, categories.title as category_name, MATCH(posts.title, posts.content) AGAINST( ? IN BOOLEAN MODE) as relevanceScore
                      FROM posts 
                      LEFT JOIN `categories` ON posts.category_id = categories.id
-		     
-                     WHERE MATCH(posts.title, posts.content) AGAINST( ? IN BOOLEAN MODE)
+		    
+                     WHERE MATCH(posts.title, posts.content) AGAINST( ? IN BOOLEAN MODE) AND posts.deleted_at IS NULL
                      ORDER BY relevanceScore DESC',
                     [$data['s'], $data['s']]
                 )
             );
+            
 
             if (empty($posts->items())) {
                 $posts = 'no_result';
